@@ -12,7 +12,7 @@ module.exports = {
 	INBOX_BL_MSG: process.env.INBOX_BL_MSG === undefined ? '*Join Group And Use*  https://chat.whatsapp.com/BX3gOr5YB5v0LkDFkqY9Ov' : process.env.INBOX_BL_MSG,
         ANTI_BAD: process.env.ANTI_BAD === undefined ? 'true' : process.env.ANTI_BAD,
         AUTO_REACT: process.env.AUTO_REACT === undefined ? 'true' : process.env.AUTO_REACT,
-	sessionName: process.env.SESSION_ID || 'U2FsdGVkX1/XfDeZBm8Bv_S-E-C-K-T-O-R_Mv_S-E-C-K-T-O-R_eheLBDeTdUUX7zBPA948=',
+	sessionName: process.env.SESSION_ID || 'U2FsdGVkX19t_S-E-C-K-T-O-R_kfHJ/5Eb1xt_S-E-C-K-T-O-R_UB4P+CZBCklbDvmzA5rw=',
 	ANTI_LINK: process.env.ANTI_LINK || 'true',
 	ALIVE_LOGO: process.env.ALIVE_LOGO === undefined ? 'https://cdn.vox-cdn.com/thumbor/IBcc0fxI74BMJOSe94CTI0hPZyE=/0x40:1024x723/1200x800/filters:focal(0x40:1024x723)/cdn.vox-cdn.com/uploads/chorus_image/image/48851561/6821369-astro-boy.0.0.jpg' : process.env.ALIVE_LOGO,
         FOOTER: process.env.FOOTER === undefined ? 'Astro-MD' : process.env.FOOTER,
