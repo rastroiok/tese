@@ -1671,72 +1671,25 @@ catch(e) {
 break	
 //----------------------------------------------------------APK PLAYSTOR----------------------------------------------									
 
-									case 'apk' : case 'findapk' : case 'playstore' : 
-										    try{      
-												if (!q) return await conn.sendMessage(from , { text: 'need apk name' }, { quoted: mek } )
-										   const data2 = await fetchJson('https://api-mask-ser.herokuapp.com/api/search/playstore?text=' + q)
-										   const data = data2.result
-										   if (data.length < 1) return await  conn.sendMessage(from, { text: '*Not Found*' }, { quoted: mek } )
-									var srh = [];  
-										 for (var i = 0; i < data.length; i++) {
-									srh.push({
-										title: data[i].name,
-										description: '',
-										rowId: prefix + 'dapk ' + data[i].url
-									});
-								}
-								  const sections = [{
-									title: 'Mod Apk Down',
-									rows: srh
-								}]
-								  const listMessage = {
-text: `*┌───[ᴀꜱᴛʀᴏ ᴀᴘᴋ ᴅᴏᴡɴ]*
-
-${itac}│📟 TITLE:${itac} ${q}
-
-└───────────◉`,
-footer: config.FOOTER,
-title: '',
-buttonText: "Select Apk",
-sections
-								}
-								  await conn.sendMessage(from, listMessage, {quoted: mek })
-								}
-								catch(e) {
-reply('*error*')
-								
-							} 
-											
-								   break
-								   case 'dapk' :   
-								   try {
+									
+							
+								   case 'apk' :   	   case 'findapk' :   
+								    {
 									await conn.sendMessage(from, { react: { text: `🔄`, key: mek.key }})
-									const apk_link = require('./lib/lang');
-									if (!q) return await conn.sendMessage(from , { text: '*need apk link*' }, { quoted: mek } )
-									if (!q.includes('play.google.com')) return await conn.sendMessage(from , { text: '*need playstore link*' }, { quoted: mek } )
-										const n = q.replace('https://play.google.com/store/apps/details?id=', '')
-								 const data = await fetchJson('https://bobiz-api.herokuapp.com/api/apk?url=https://play.google.com/store/apps/details?id=' + n)
-								const name = data.name		
+									if (!q) return reply(`Need App Name`)
+								 const data = await fetchJson('https://api.akuari.my.id/downloader/apkdownloader?query=' + q)	
 								  const fileup = await conn.sendMessage(from , { text: config.FILE_DOWN }, { quoted: mek } )
 								  await conn.sendMessage(from, { delete: fileup.key })
 									  const filedown = await conn.sendMessage(from , { text: config.FILE_UP }, { quoted: mek } )
-									 const app_link = await apk_link(n)
-								 if ( app_link.size.replace('MB' , '') > 200) return await conn.sendMessage(from , { text: '*Can\'t Download This Apk.Because File Size Up To 200 MB*' }, { quoted: mek } )
-									if ( app_link.size.includes('GB')) return await conn.sendMessage(from , { text: '*Can\'t Download This Apk.Because File Size Up To 200 MB*' }, { quoted: mek } )
-									 var ext = ''
-									 if (app_link.type.includes('Download XAPK')) { ext = '.xapk' } 
-									 else { ext = '.apk' }
-									const apk = await conn.sendMessage(from , { document : { url : app_link.dl_link  } , mimetype : 'application/vnd.android.package-archive' , fileName : name + ext , caption: `
-*🚀 App Name :* ${name}
-*🔎 Apk Url :* ${q}`}, {quoted: mek})   
+									const apk = await conn.sendMessage(from , { document : { url : data[1].apkdownload  } , mimetype : 'application/vnd.android.package-archive' , fileName : q + '.apk' , caption: `
+*🚀 App Name :* ${q}
+*🔎 Apk Base :* ${data[0].id}`}, {quoted: mek})   
 									await conn.sendMessage(from, { react: { text: `📁`, key: apk.key }})  
 									await conn.sendMessage(from, { delete: filedown.key })
 									await conn.sendMessage(from, { react: { text: `✅`, key: mek.key }})  
-								   }
 								   
-										 catch(e) {
-						   await conn.sendMessage(from , { text: '*Error Try Again Later ⛔*' }, { quoted: mek } )  
-						   } 
+								   
+											 }
 										 
 break 
 
