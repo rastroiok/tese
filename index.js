@@ -1676,7 +1676,7 @@ break
 								    try{
 									await conn.sendMessage(from, { react: { text: `🔄`, key: mek.key }})
 									if (!q) return reply(`Need App Name`)
-								 const data = await fetchJson('https://api.akuari.my.id/downloader/apkdownloader?query=' + q)	
+								 const data = fetchJson('https://api.akuari.my.id/downloader/apkdownloader?query=' + q)	
 								  const fileup = await conn.sendMessage(from , { text: config.FILE_DOWN }, { quoted: mek } )
 								  await conn.sendMessage(from, { delete: fileup.key })
 									  const filedown = await conn.sendMessage(from , { text: config.FILE_UP }, { quoted: mek } )
@@ -1688,11 +1688,39 @@ break
 								   
 								}
 								catch(e) {
-									await conn.sendMessage(from , { text: e }, { quoted: mek } )
+									await conn.sendMessage(from , { text: 'err' }, { quoted: mek } )
 								}	
 										 
 break 
 
+case 'tgd' :   	   case 'findapk' :   
+try{
+await conn.sendMessage(from, { react: { text: `🔄`, key: mek.key }})
+if (!q) return reply(`Need App Name`)
+const data = fetchJson('https://api.akuari.my.id/downloader/apkdownloader?query=' + q)	
+reply(data[1].apkdownload) 
+
+
+}
+catch(e) {
+await conn.sendMessage(from , { text: e }, { quoted: mek } )
+}	
+	 
+break 
+case 'ty' :   	   case 'findapk' :   
+try{
+await conn.sendMessage(from, { react: { text: `🔄`, key: mek.key }})
+if (!q) return reply(`Need App Name`)
+const data = fetchJson('https://api.akuari.my.id/downloader/apkdownloader?query=' + q)	
+reply(data.apkdownload) 
+
+
+}
+catch(e) {
+await conn.sendMessage(from , { text: e }, { quoted: mek } )
+}	
+	 
+break 
 	//___________________-----------------------------iog-------------------------------------------____________________
 	case 'logo': case 'logo1': try{
                 if (!q) return reply(`Example : ${prefix + command} vihanga`)
