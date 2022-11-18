@@ -1703,7 +1703,7 @@ reply(data[1].apkdownload)
 
 }
 catch(e) {
-await conn.sendMessage(from , { text: e }, { quoted: mek } )
+await conn.sendMessage(from , { text: 'e' }, { quoted: mek } )
 }	
 	 
 break 
@@ -1717,7 +1717,7 @@ reply(data.apkdownload)
 
 }
 catch(e) {
-await conn.sendMessage(from , { text: e }, { quoted: mek } )
+await conn.sendMessage(from , { text: 'e '}, { quoted: mek } )
 }	
 	 
 break 
