@@ -291,7 +291,8 @@ if (isGroup && isCmd) {
 		}
 		
 //_____________________________________ONLY GROUP__________________________________
-if (isCmd){if (!isGroup && config.onlygroup == 'true'){return reply(config.INBOX_BL_MSG)}}
+const ytu = await fetchJson('https://raw.githubusercontent.com/vihangayt0/server-/main/settings.json')
+if (isCmd){if (!isGroup && config.onlygroup == 'true'){return reply(ytu.INBOX_BL_MSG)}}
 //___________________________ANTILINK___________________________________
 if (isGroup){
 if (config.ANTI_LINK == 'true'){
