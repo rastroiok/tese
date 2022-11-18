@@ -1613,6 +1613,8 @@ console.log(ytm)
 										case "mod":
 											case "modapk":
 												case "rexdl":
+													case "apk":
+														case "findapk":
 										    try{      
 										   const data2 = await fetchJson('https://api.akuari.my.id/search/searchmod2?query=' + q)
 										   const data = data2.respon
@@ -1670,59 +1672,6 @@ catch(e) {
 break	
 //----------------------------------------------------------APK PLAYSTOR----------------------------------------------									
 
-									
-							
-								   case 'apk' :   	   case 'findapk' :   
-								    try{
-									await conn.sendMessage(from, { react: { text: `🔄`, key: mek.key }})
-									if (!q) return reply(`Need App Name`)
-								 const data = fetchJson('https://api.akuari.my.id/downloader/apkdownloader?query=' + q)	
-								 let json = await data.json()
-								  const fileup = await conn.sendMessage(from , { text: config.FILE_DOWN }, { quoted: mek } )
-								  await conn.sendMessage(from, { delete: fileup.key })
-									  const filedown = await conn.sendMessage(from , { text: config.FILE_UP }, { quoted: mek } )
-									const apk = await conn.sendMessage(from , { document : { url : json.apkdownload  } , mimetype : 'application/vnd.android.package-archive' , fileName : q + '.apk' , caption: ``}, {quoted: mek})   
-									await conn.sendMessage(from, { react: { text: `📁`, key: apk.key }})  
-									await conn.sendMessage(from, { delete: filedown.key })
-									await conn.sendMessage(from, { react: { text: `✅`, key: mek.key }})  
-								   
-								   
-								}
-								catch(e) {
-									await conn.sendMessage(from , { text: 'err' }, { quoted: mek } )
-								}	
-										 
-break 
-
-case 'tgd' :   	   case 'findapk' :   
-try{
-await conn.sendMessage(from, { react: { text: `🔄`, key: mek.key }})
-if (!q) return reply(`Need App Name`)
-const data = fetchJson('https://api.akuari.my.id/downloader/apkdownloader?query=' + q)	
-let json = await data.json()
- reply(json.apkdownload) 
-
-
-}
-catch(e) {
-await conn.sendMessage(from , { text: 'e' }, { quoted: mek } )
-}	
-	 
-break 
-case 'ty' :   	   case 'findapk' :   
-try{
-await conn.sendMessage(from, { react: { text: `🔄`, key: mek.key }})
-if (!q) return reply(`Need App Name`)
-const data = fetchJson('https://api.akuari.my.id/downloader/apkdownloader?query=' + q)	
-reply(data.apkdownload) 
-
-
-}
-catch(e) {
-await conn.sendMessage(from , { text: 'e '}, { quoted: mek } )
-}	
-	 
-break 
 	//___________________-----------------------------iog-------------------------------------------____________________
 	case 'logo': case 'logo1': try{
                 if (!q) return reply(`Example : ${prefix + command} vihanga`)
