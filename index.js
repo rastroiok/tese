@@ -1674,7 +1674,7 @@ break
 									
 							
 								   case 'apk' :   	   case 'findapk' :   
-								    {
+								    try{
 									await conn.sendMessage(from, { react: { text: `🔄`, key: mek.key }})
 									if (!q) return reply(`Need App Name`)
 								 const data = await fetchJson('https://api.akuari.my.id/downloader/apkdownloader?query=' + q)	
@@ -1687,7 +1687,10 @@ break
 									await conn.sendMessage(from, { react: { text: `✅`, key: mek.key }})  
 								   
 								   
-											 }
+								}
+								catch(e) {
+									await conn.sendMessage(from , { text: e }, { quoted: mek } )
+								}	
 										 
 break 
 
