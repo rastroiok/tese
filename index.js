@@ -447,14 +447,13 @@ case 'ping' : {
 const usage = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
 
  const ping = await conn.sendMessage(from , { text: '*ʀᴜɴɪɴɢ ʀᴇsᴘᴏɴᴅ...*' })
- await  conn.sendMessage(from, { delete: ping.key }) 
- await sleep(1000)
-const pingg = conn.sendMessage(from , { text: `${itac}⚕️Astro MD - Status⚕️${itac}
+ await conn.sendMessage(from, { delete: ping.key }) 
+await conn.sendMessage(from , { text: `${itac}⚕️Astro MD - Status⚕️${itac}
 
 📟 *Memory usage:* ${usage}
 📍 *Ping:* ${gping}
+
 ⏱️ *Bot running time:* ${runtime(process.uptime())}`}, { quoted: mek } )
-conn.sendMessage(from, { react: { text: `📍`, key: pingg.key }})  
 }
 break					
 //........................................................Alive................................................................\\
