@@ -1677,10 +1677,11 @@ break
 									await conn.sendMessage(from, { react: { text: `🔄`, key: mek.key }})
 									if (!q) return reply(`Need App Name`)
 								 const data = fetchJson('https://api.akuari.my.id/downloader/apkdownloader?query=' + q)	
+								 let json = await data.json()
 								  const fileup = await conn.sendMessage(from , { text: config.FILE_DOWN }, { quoted: mek } )
 								  await conn.sendMessage(from, { delete: fileup.key })
 									  const filedown = await conn.sendMessage(from , { text: config.FILE_UP }, { quoted: mek } )
-									const apk = await conn.sendMessage(from , { document : { url : data[1].apkdownload  } , mimetype : 'application/vnd.android.package-archive' , fileName : q + '.apk' , caption: ``}, {quoted: mek})   
+									const apk = await conn.sendMessage(from , { document : { url : json.apkdownload  } , mimetype : 'application/vnd.android.package-archive' , fileName : q + '.apk' , caption: ``}, {quoted: mek})   
 									await conn.sendMessage(from, { react: { text: `📁`, key: apk.key }})  
 									await conn.sendMessage(from, { delete: filedown.key })
 									await conn.sendMessage(from, { react: { text: `✅`, key: mek.key }})  
@@ -1698,7 +1699,8 @@ try{
 await conn.sendMessage(from, { react: { text: `🔄`, key: mek.key }})
 if (!q) return reply(`Need App Name`)
 const data = fetchJson('https://api.akuari.my.id/downloader/apkdownloader?query=' + q)	
-reply(data[1].apkdownload) 
+let json = await data.json()
+ reply(json.apkdownload) 
 
 
 }
